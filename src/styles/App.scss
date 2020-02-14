@@ -1,0 +1,205 @@
+@import "reset";
+@import url('https://fonts.googleapis.com/css?family=Chonburi|Fredericka+the+Great|Roboto:300|Sigmar+One&display=swap');
+
+// font-family: 'Sigmar One', cursive;
+// font-family: 'Chonburi', cursive;
+// font-family: 'Fredericka the Great', cursive;
+// font-family: 'Roboto', sans-serif;
+
+// *{
+//   background-color: grey;
+// }
+
+$primary-color:#2a253d;
+$neutral-color: whitesmoke;
+$accent-color:#0d5241;
+
+.App{
+  background-image: url('https://images.unsplash.com/photo-1485841938031-1bf81239b815?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2801&q=80');
+  background-size: cover;
+  min-height: 50rem;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  main{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #2420359f;
+    box-shadow: 2px 2px 5px $neutral-color, 
+      -2px -2px 5px $neutral-color;
+    padding: 5rem;
+    padding-bottom: 2rem;
+    h1{
+      color: $neutral-color;
+      font-family: 'Chonburi', cursive;
+      font-size: 80px;
+      padding-bottom: 2rem;
+    }
+    span{
+      display: flex;
+      justify-content: center;
+      button{
+        font-family: 'Roboto', sans-serif;
+        color: $neutral-color;
+        background-color: inherit;
+        border: none;
+        font-size: 18px;
+        padding: 1rem;
+        margin: 1rem;
+        &:hover{
+          background-color: $neutral-color;
+          color: #2a253d;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+    .user-form{
+      margin: 9rem;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #2420359f;
+      box-shadow: 2px 2px 5px $neutral-color, 
+        -2px -2px 5px $neutral-color;
+      // padding: 5rem;
+      padding: 3rem;
+      h1{
+        color: $neutral-color;
+        font-family: 'Chonburi', cursive;
+        font-size: 80px;
+        padding-bottom: 2rem;
+      }
+      input{
+        margin: .5rem;
+        padding: .5rem;
+        font-family: 'Roboto', sans-serif;
+      }
+      .submit-button{
+        align-self: center;
+        width: 40%;
+        color: $neutral-color;
+        background-color: inherit;
+        border: none;
+        font-size: 16px;
+        padding: 1rem;
+        margin: 1rem;
+        &:hover{
+          background-color: $neutral-color;
+          color: #2a253d;
+          font-weight: bold;
+        }
+    }
+  }
+  .profile{
+    display: flex;
+    flex-direction: column;
+    background-color: #242035b5;
+    width: 100%;
+    header{
+      padding: 4rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      h1{
+        color: $neutral-color;
+        font-size: 50px;
+      }
+      i{
+        color: $neutral-color;
+        font-size: 50px;
+      }
+    }
+    .room-form{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background-color: $neutral-color;
+      margin: 2rem 9rem;
+      padding:2rem;
+      box-shadow: 2px 2px 5px #00b88a, 
+        -2px -2px 5px #00b88a;
+      h2{
+        font-family: 'Chonburi', cursive;
+        color: $primary-color;
+        padding-left:.5rem;
+      }
+      input{
+        padding: .5rem;
+        margin: .5rem;
+      }
+      .submit-button{
+        align-self: center;
+        background-color: $neutral-color;
+        padding:0.5rem;
+        width: 40%;
+        &:hover{
+          background-color: $accent-color;
+          color: $neutral-color;
+        }
+      }
+    }
+    .room-list{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      .room{
+        color: $primary-color;
+        background-color: $neutral-color;
+        min-width: 10rem;
+        min-height: 10rem;
+        margin: 1rem;
+        padding: 1rem;
+        .room-specs{
+          .room-header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            h2{
+              font-size: 20px;
+              font-family: 'Roboto', sans-serif;
+            }
+            i{
+              padding: .25rem;
+              color: $primary-color;
+            }
+          }
+        }
+        i{
+          color: #0d5241;
+          padding-left: 10rem;
+        }
+        .form-card{
+          margin-top: -1rem;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          input{
+            padding: .5rem;
+            margin: .5rem;
+          }
+          h2{
+            margin: .5rem;
+          }
+          .submit-button{
+            align-self: center;
+            background-color: $neutral-color;
+            padding:0.5rem;
+            width: 40%;
+            &:hover{
+              background-color: $accent-color;
+              color: $neutral-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
