@@ -23,24 +23,22 @@ export default class PrivateRoute extends Component {
     toggleForm = () => {
         console.log("hit")
         this.setState({showForm:true})
-        // return <RoomForm {...routerprops} roomAction={addRoom} />
-        // this.setState({showForm: !this.state.showForm})
     }
 
     render() {
     return (
         <Route render={(routerprops) => {
-            const {rooms, addRoom, deleteRoom, updateRoom} = this.props
-
+            const {rooms, username, roomAction, deleteRoom, updateRoom} = this.props
+            // console.log("test2", addRoom)
             return localStorage.token
                 ? (
                     <div className="profile">
                         <header>
-                            <h1>Welcome, </h1>
-                            <i class="far fa-plus-square" onClick={this.toggleForm}></i>
+                            <h1>Welcome, {username}!</h1>
+                            <i className="far fa-plus-square" onClick={this.toggleForm}></i>
                         </header>
                         { this.state.showForm 
-                            ? <RoomForm {...routerprops} roomAction={addRoom} label="Add A New Room" formName="room-form"/>
+                            ? <RoomForm {...routerprops} roomAction={roomAction} label="Add A New Room" formName="room-form"/>
                             : null
                         }
                         {/* <RoomForm {...routerprops} roomAction={addRoom} />  */}

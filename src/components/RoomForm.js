@@ -4,13 +4,14 @@ export default class RoomForm extends Component {
 
     state = {
         name: '',
-        maxCapacity: '',
+        max_capacity: '',
+        id: null
     }
 
     componentDidMount(){
         this.setState({
             name: this.props.name,
-            maxCapacity: this.props.maxCapacity,
+            max_capacity: this.props.max_capacity,
             id: this.props.id
         })
     }
@@ -27,7 +28,8 @@ export default class RoomForm extends Component {
         this.props.roomAction(this.state)
         this.setState({
             name: '',
-            maxCapacity: ''
+            max_capacity: '',
+            id: null
         })
         return this.props.closeForm ? this.props.closeForm(false) : null
     }
@@ -38,7 +40,7 @@ export default class RoomForm extends Component {
             <form className={this.props.formName} onSubmit={this.handleSubmit}>
                 <h2>{this.props.label}</h2>
                 <input name="name" value={this.state.name} onChange={this.handleChange} placeholder="Name"/>
-                <input name="maxCapacity" value={this.state.maxCapacity} onChange={this.handleChange} placeholder="Max-Capacity"/>
+                <input name="max_capacity" value={this.state.max_capacity} onChange={this.handleChange} placeholder="Max-Capacity"/>
                 <input type="submit" className="submit-button"/>
             </form>
         )

@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import RoomForm from './RoomForm'
 
-export default function Room({id, name, maxCapacity, deleteRoom, updateRoom}) {
+export default function Room({id, name, max_capacity, deleteRoom, updateRoom}) {
 
     const [isClicked, setisClicked] = useState(false)
 
     useEffect(() => {
         setisClicked(false)
-    }, [name, maxCapacity]);
+    }, [name, max_capacity]);
 
     const handleDelete = (event) => {
         return event.target.id === "edit" ? setisClicked(true) : deleteRoom(id)
@@ -22,7 +22,7 @@ export default function Room({id, name, maxCapacity, deleteRoom, updateRoom}) {
                     <i className="fa fa-times-circle" id="delete" onClick={handleDelete}></i>
                 </span>
             </div>
-            <p>{maxCapacity ? maxCapacity : "Default Max Capacity"}</p>
+            <p>{max_capacity ? `${max_capacity}` : "Default Max Capacity"}</p>
         </div>
     )
 
@@ -35,7 +35,7 @@ export default function Room({id, name, maxCapacity, deleteRoom, updateRoom}) {
                     <RoomForm 
                         id={id} 
                         name={name} 
-                        maxCapacity={maxCapacity} 
+                        max_capacity={max_capacity} 
                         roomAction={updateRoom} 
                         closeForm={setisClicked}
                         label="Update Room"
