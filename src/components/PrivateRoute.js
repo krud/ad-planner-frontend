@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import RoomList from './RoomList';
 import RoomForm from './RoomForm'
+import Calendar from './Calendar'
 
 export default class PrivateRoute extends Component {
 
@@ -20,6 +21,11 @@ export default class PrivateRoute extends Component {
         this.setState({show:"signup"})
     }
 
+    logoutClicked = (event) => {
+        event.preventDefault();
+        this.props.logout()
+      }
+
     toggleForm = () => {
         console.log("hit")
         this.setState({showForm:true})
@@ -35,14 +41,21 @@ export default class PrivateRoute extends Component {
                     <div className="profile">
                         <header>
                             <h1>Welcome, {username}!</h1>
-                            <i className="far fa-plus-square" onClick={this.toggleForm}></i>
+                            <button onClick={this.logoutClicked}>Logout</button>
                         </header>
-                        { this.state.showForm 
-                            ? <RoomForm {...routerprops} roomAction={roomAction} label="Add A New Room" formName="room-form"/>
-                            : null
-                        }
-                        {/* <RoomForm {...routerprops} roomAction={addRoom} />  */}
-                        <RoomList {...routerprops} rooms={rooms} deleteRoom={deleteRoom} updateRoom={updateRoom}/>
+                        <div className="current-rooms">
+                            <div className="test">
+                                <h2>My Rooms</h2>
+                                <i className="far fa-plus-square" onClick={this.toggleForm}></i>
+                            </div>
+                            { this.state.showForm 
+                                ? <RoomForm {...routerprops} roomAction={roomAction} label="Add A New Room" formName="room-form"/>
+                                : null
+                            }
+                            {/* <RoomForm {...routerprops} roomAction={addRoom} />  */}
+                            <RoomList {...routerprops} rooms={rooms} deleteRoom={deleteRoom} updateRoom={updateRoom}/>
+                        </div>
+                        <Calendar />
                     </div>
                 )
                 : <>

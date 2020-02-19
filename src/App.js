@@ -50,7 +50,8 @@ export default class App extends Component {
               username={this.state.username}
               deleteRoom={this.deleteRoom} 
               updateRoom={this.updateRoom} 
-              roomAction={this.addRoom} 
+              roomAction={this.addRoom}
+              logout={this.logout}
               />
             <Route path='/signup' render={(routerprops) => <Signup {...routerprops} signup={this.signup}/>}/>
             <Route path='/login' render={(routerprops) => <Login {...routerprops} login={this.login}/>}/>
@@ -58,6 +59,16 @@ export default class App extends Component {
         </div>
       </Router>
     )
+  }
+
+  logout = () => {
+    localStorage.clear()
+    this.setState({
+      rooms: [],
+      username: "",
+      id: "",
+    })
+    // reloadPage();
   }
 
   login = (user, history) => {

@@ -1,0 +1,108 @@
+import React, { useState } from "react";
+// import dateFns from 'date-fns/esm';
+import {format, subMonths, addMonths, startOfMonth, endOfMonth, addDays, startOfWeek, endOfWeek, isSameMonth, isSameDay, parse} from "date-fns";
+import "../styles/Calendar.scss";
+
+export default function Calendar(){
+
+// const Calendar = () => {
+    const [currentDate, setCurrentDate] = useState(new Date())
+    const [selectedDate, setSelectedDate] = useState(new Date())
+
+    const nextMonth = () => {
+        setCurrentDate(addMonths(currentDate, 1));
+     }
+     const prevMonth = () => {
+        setCurrentDate(subMonths(currentDate, 1));
+     }
+
+    const header = () => {
+        const dateFormat = "MMM yyy";
+        return (
+            <div className="row month">
+                <i class="fas fa-chevron-left" onClick={prevMonth}></i>
+                <h3>{format(currentDate, dateFormat)}</h3>
+                <i class="fas fa-chevron-right" onClick={nextMonth}></i>
+            </div>
+        //    <div className="header row flex-middle">
+        //       <div className="column col-start">
+        //          <div className="icon" onClick={prevMonth}>
+        //             chevron_left
+        //          </div>
+        //       </div>
+        //       <div className="column col-center">
+        //          <span>{format(currentDate, dateFormat)}</span>
+        //       </div>
+        //       <div className="column col-end">
+        //          <div className="icon" onClick={nextMonth}>
+        //             chevron_right
+        //          </div>
+        //       </div>
+        //    </div>
+           );
+        };
+
+    const daysOfWeek = () => {
+        const dateFormat = "E";
+        const days = [];
+        let startDate = startOfWeek(currentDate);
+        for (let i = 0; i < 7; i++) {
+              days.push(
+                //  <div className="column col-center" key={i}>
+                <p key={i}>
+                    {format(addDays(startDate, i), dateFormat)}
+                </p>
+                //  </div>
+              );
+           }
+           return <div className="days row">{days}</div>;
+    }
+
+    const onDateClick = day => {
+        setSelectedDate(day)
+    }
+
+    const cells = () => {
+            const monthStart = startOfMonth(currentDate);
+            const monthEnd = endOfMonth(monthStart);
+            const startDate = startOfWeek(monthStart);
+            const endDate = endOfWeek(monthEnd);
+            const dateFormat = "d";
+            const rows = [];
+            let days = [];
+            let day = startDate;
+            let formattedDate = "";
+
+            while (day <= endDate) {
+               for (let i = 0; i < 7; i++) {
+               formattedDate = format(day, dateFormat);
+               const day2 = day;
+               days.push(
+                  <div 
+                   className={`cell ${!isSameMonth(day, monthStart)
+                   ? "disabled" : isSameDay(day, selectedDate) 
+                   ? "selected" : "" }`} 
+                   key={day} 
+                   onClick={() => onDateClick(day2)}
+                   > 
+                   <p className="number">{formattedDate}</p>
+                 </div>
+                 );
+               day = addDays(day, 1);
+              }
+               rows.push(
+                  <div className="row" key={day}> {days} </div>
+                );
+               days = [];
+             }
+            return <div className="body">{rows}</div>;
+    }
+
+    return (
+        <div className="calendar">
+            {header()}     
+            {daysOfWeek()}     
+            {cells()}
+        </div>
+    );
+}
