@@ -27,16 +27,6 @@ export default class App extends Component {
       ? this.setState({rooms: result.user.rooms, username: result.user.username, id: result.user.id })
       : null
     })
-    // fetch('http://localhost:3000/api/v1/rooms', {
-    //   method: 'GET',
-    //   headers: {
-    //     'Authorization':`Bearer ${token}`
-    //   }
-    // }).then(response => response.json())
-    // // .then(console.log)
-    // .then(result => {
-    //   return result.map(room => this.setState({rooms: [...this.state.rooms, room]}))
-    // })
   }
 
   render() {
@@ -68,7 +58,6 @@ export default class App extends Component {
       username: "",
       id: "",
     })
-    // reloadPage();
   }
 
   login = (user, history) => {

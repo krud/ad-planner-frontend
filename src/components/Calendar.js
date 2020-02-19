@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-// import dateFns from 'date-fns/esm';
-import {format, subMonths, addMonths, startOfMonth, endOfMonth, addDays, startOfWeek, endOfWeek, isSameMonth, isSameDay, parse} from "date-fns";
+import {format, subMonths, addMonths, startOfMonth, endOfMonth, addDays, startOfWeek, endOfWeek, isSameMonth, isSameDay} from "date-fns";
 import "../styles/Calendar.scss";
 
 export default function Calendar(){
 
-// const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date())
     const [selectedDate, setSelectedDate] = useState(new Date())
 
@@ -24,21 +22,6 @@ export default function Calendar(){
                 <h3>{format(currentDate, dateFormat)}</h3>
                 <i class="fas fa-chevron-right" onClick={nextMonth}></i>
             </div>
-        //    <div className="header row flex-middle">
-        //       <div className="column col-start">
-        //          <div className="icon" onClick={prevMonth}>
-        //             chevron_left
-        //          </div>
-        //       </div>
-        //       <div className="column col-center">
-        //          <span>{format(currentDate, dateFormat)}</span>
-        //       </div>
-        //       <div className="column col-end">
-        //          <div className="icon" onClick={nextMonth}>
-        //             chevron_right
-        //          </div>
-        //       </div>
-        //    </div>
            );
         };
 
@@ -48,11 +31,9 @@ export default function Calendar(){
         let startDate = startOfWeek(currentDate);
         for (let i = 0; i < 7; i++) {
               days.push(
-                //  <div className="column col-center" key={i}>
                 <p key={i}>
                     {format(addDays(startDate, i), dateFormat)}
                 </p>
-                //  </div>
               );
            }
            return <div className="days row">{days}</div>;
